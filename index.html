@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   
   <style>
-    /* 自定义主题颜色，与 ZJU-Wiki 风格对齐 */
+    /* 自定义主题颜色 */
     :root {
-      --theme-color: #42b983; /* 经典 Vue 绿 */
+      --theme-color: #42b983;
     }
     /* 侧边栏样式微调 */
     .sidebar-nav li > a {
@@ -20,6 +20,7 @@
     }
     .markdown-section {
       max-width: 900px;
+      margin: 0 auto;
     }
   </style>
 </head>
@@ -30,24 +31,29 @@
     window.$docsify = {
       // 1. 基本信息配置
       name: 'PYRo Lib',
-      repo: 'https://github.com/zhou-ee/Lucky.github.io', // 如果你有 GitHub 仓库地址，请填在这里
+      repo: 'https://github.com/zhou-ee/Lucky.github.io',
       
       // 2. 侧边栏与封面配置
       loadSidebar: true,    // 必须有 _sidebar.md
-      loadNavbar: false,    // 如果需要顶部导航再开启
       coverpage: true,      // 必须有 _coverpage.md
-      onlyCover: false,     // 封面独立显示
+      onlyCover: false,     // 封面不独立，向下滚动可见正文
       
-      // 3. 路由与跳转优化（解决 404 关键）
+      // 3. 路由与跳转优化（解决 404 的关键点）
       auto2top: true,       // 切换页面自动回到顶部
-      relativePath: true,   // 使用相对路径，增加部署兼容性
+      // 重要：在托管至 github.io 根目录时，建议关闭 relativePath 以防深层目录失效
+      relativePath: false,  
+      
+      // 确保所有层级的页面都能正确找到根目录的侧边栏
       alias: {
-        '/.*/_sidebar.md': '/_sidebar.md' // 强制所有深层目录共用根目录的侧边栏
+        '/.*/_sidebar.md': '/_sidebar.md'
       },
+      
+      // 显式指定首页文件
+      homepage: 'README.md',
       
       // 4. 内容提取配置
       subMaxLevel: 3,       // 侧边栏自动提取 md 文件内的标题层级
-      sidebarDisplayLevel: 1, // 初始展开层级
+      sidebarDisplayLevel: 1, 
       
       // 5. 搜索功能配置
       search: {
