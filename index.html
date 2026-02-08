@@ -4,84 +4,47 @@
   <meta charset="UTF-8">
   <title>PYRo Library Wiki</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="A modular embedded library for robotics.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  
   <style>
-    /* 自定义主题颜色 */
-    :root {
-      --theme-color: #42b983;
-    }
-    /* 侧边栏样式微调 */
-    .sidebar-nav li > a {
-      font-size: 15px;
-    }
-    .markdown-section {
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    :root { --theme-color: #42b983; }
+    .markdown-section { max-width: 900px; }
   </style>
 </head>
 <body>
   <div id="app">正在加载 PYRo 库文档...</div>
-  
   <script>
     window.$docsify = {
-      // 1. 基本信息配置
       name: 'PYRo Lib',
       repo: 'https://github.com/zhou-ee/Lucky.github.io',
+      loadSidebar: true,
+      coverpage: true,
+      auto2top: true,
       
-      // 2. 侧边栏与封面配置
-      loadSidebar: true,    // 必须有 _sidebar.md
-      coverpage: true,      // 必须有 _coverpage.md
-      onlyCover: false,     // 封面不独立，向下滚动可见正文
+      // --- 关键修正点 ---
+      // 1. 关闭相对路径，防止在项目子目录下解析出错
+      relativePath: false, 
       
-      // 3. 路由与跳转优化（解决 404 的关键点）
-      auto2top: true,       // 切换页面自动回到顶部
-      // 重要：在托管至 github.io 根目录时，建议关闭 relativePath 以防深层目录失效
-      relativePath: false,  
+      // 2. 显式指定首页，确保即便文件为空也能被路由识别
+      homepage: 'README.md', 
       
-      // 确保所有层级的页面都能正确找到根目录的侧边栏
+      // 3. 强化别名，确保所有深层页面都能拉取到根目录的侧边栏
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
       },
+      // -----------------
       
-      // 显式指定首页文件
-      homepage: 'README.md',
-      
-      // 4. 内容提取配置
-      subMaxLevel: 3,       // 侧边栏自动提取 md 文件内的标题层级
-      sidebarDisplayLevel: 1, 
-      
-      // 5. 搜索功能配置
+      subMaxLevel: 3,
       search: {
-        maxAge: 86400000,
         paths: 'auto',
         placeholder: '搜索文档',
-        noData: '找不到结果',
-        depth: 6
-      },
-
-      // 6. 代码复制功能
-      copyCode: {
-        buttonText: '复制',
-        errorText: '失败',
-        successText: '已复制'
+        noData: '找不到结果'
       }
     }
   </script>
-
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-  
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
-  
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
-  
   <script src="//cdn.jsdelivr.net/npm/docsify-copy-code/dist/docsify-copy-code.min.js"></script>
-  
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
-  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
 </body>
 </html>
