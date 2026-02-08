@@ -8,7 +8,7 @@
 - **极简 API**：上手简单，调用统一
 - **性能优化**：针对资源受限环境深度优化
 
-[GitHub](https://github.com/你的用户名/PYRo)
+[GitHub](https://github.com/zhou-ee/Lucky.github.io)
 [立即开始阅读](#README)
 
 ![color](#f0f0f0)
